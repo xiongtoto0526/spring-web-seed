@@ -37,15 +37,6 @@ dependencies {
     compile group: 'org.springframework', name: 'spring-messaging', version:'4.3.5.RELEASE'
 
     compile group: 'org.springframework', name: 'spring-core', version:'4.3.5.RELEASE'
-    compile group: 'org.springframework.security', name: 'spring-security-core', version:'4.2.1.RELEASE'
-    compile group: 'org.springframework.security', name: 'spring-security-config', version:'4.2.1.RELEASE'
-    compile(group: 'org.springframework.security', name: 'spring-security-web', version:'4.2.1.RELEASE') {
-        exclude(module: 'spring-jdbc')
-
-        compile('org.springframework.boot:spring-boot-starter-thymeleaf')
-
-
-    }
 }
 
 eclipse {
