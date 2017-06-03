@@ -51,7 +51,13 @@ public class PortfolioController {
 	}
 
 	@SubscribeMapping("/positions")
-	public List<PortfolioPosition> getPositions(Principal principal) throws Exception {
+	public List<PortfolioPosition> getPositions() throws Exception {
+        Principal principal = new Principal() {
+            @Override
+            public String getName() {
+                return "xht";
+            }
+        };
 		logger.debug("Positions for " + principal.getName());
 		Portfolio portfolio = this.portfolioService.findPortfolio(principal.getName());
 		return portfolio.getPositions();
