@@ -56,7 +56,7 @@ angular.module('springPortfolio.services', [])
         };
         return wrappedSocket;
     }])
-    .factory('TradeService', ['StompClient', '$q', function (stompClient, $q) {
+    .factory('TradeService', ['StompClient', '$q', '$http', function (stompClient, $q) {
 
         return {
             connect: function (url) {

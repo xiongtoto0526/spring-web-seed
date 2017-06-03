@@ -18,11 +18,14 @@ package com.master.seed.web;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.master.seed.vo.CommonResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.simp.user.SimpUser;
 import org.springframework.messaging.simp.user.SimpUserRegistry;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -31,15 +34,19 @@ public class UserController {
 	private SimpUserRegistry userRegistry;
 
 
-//    @RequestMapping("/")
-//    public String greeting() {
-//        return "Hello World!";
-//    }
-//
-//    @RequestMapping("/login.html")
-//    public String login() {
-//        return "login";
-//    }
+    @RequestMapping("/login/")
+    public String greeting() {
+        return "Hello World!";
+    }
+
+    @RequestMapping(value = "/user-login",method = RequestMethod.GET)
+    public ResponseEntity<?> login(@RequestParam String userName,@RequestParam String password) {
+        if (("xht").equals(userName) && "1".equals(password)) {
+            return ResponseEntity.ok(new CommonResponse("0","success"));
+        }else {
+            return ResponseEntity.ok(new CommonResponse("-1","failed"));
+        }
+    }
 
 	@Autowired
 	public UserController(SimpUserRegistry userRegistry) {

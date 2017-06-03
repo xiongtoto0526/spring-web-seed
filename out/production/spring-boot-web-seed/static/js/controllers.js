@@ -60,6 +60,7 @@ angular.module('springPortfolio.controllers', ['ui.bootstrap'])
 
         $scope.logout = function() {
             tradeService.disconnect();
+            window.location = '/login.html';
         };
 
         tradeService.connect("/portfolio")

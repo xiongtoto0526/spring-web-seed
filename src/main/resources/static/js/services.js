@@ -25,7 +25,7 @@ angular.module('springPortfolio.services', [])
                     }
                 });
             },
-            disconnect: function() {
+            disconnect: function () {
                 stompClient.disconnect();
             },
             subscribe: function (destination) {
@@ -56,7 +56,7 @@ angular.module('springPortfolio.services', [])
         };
         return wrappedSocket;
     }])
-    .factory('TradeService', ['StompClient', '$q', function (stompClient, $q) {
+    .factory('TradeService', ['StompClient', '$q', '$http', function (stompClient, $q) {
 
         return {
             connect: function (url) {
@@ -65,10 +65,10 @@ angular.module('springPortfolio.services', [])
                     return frame.headers['user-name'];
                 });
             },
-            disconnect: function() {
+            disconnect: function () {
                 stompClient.disconnect();
             },
-            loadPositions: function() {
+            loadPositions: function () {
                 return stompClient.subscribeSingle("/app/positions");
             },
             fetchQuoteStream: function () {
@@ -80,7 +80,7 @@ angular.module('springPortfolio.services', [])
             fetchErrorStream: function () {
                 return stompClient.subscribe("/user/queue/errors");
             },
-            sendTradeOrder: function(tradeOrder) {
+            sendTradeOrder: function (tradeOrder) {
                 return stompClient.send("/app/trade", {}, JSON.stringify(tradeOrder));
             }
         };
