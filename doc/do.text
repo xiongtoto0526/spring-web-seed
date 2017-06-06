@@ -4,3 +4,14 @@
   验证了 chat-room,browse,market-price,websocket 等功能.
 
 
+2.验证websocket功能时,发现stomp.js中增加了:
+ client: function(url, protocols) {
+      var klass, ws;
+      if (protocols == null) {
+        protocols = ['v10.stomp', 'v11.stomp'];
+      }
+  导致报错:
+  stomp.js:370 WebSocket connection to 'ws://localhost:61614/stomp' failed: Error during WebSocket handshake: 'Sec-WebSocket-Protocol'
+header value 'stomp' in response does not match any of sent values
+  解决:
+  尝试修改stomp.js的版本库

@@ -13,9 +13,9 @@ public class SenderService {
     @Autowired
     private Producter producter;
 
-    @Scheduled(fixedDelay=1500)
-    public void sendMessage() {
-        Destination p2pMsg = new ActiveMQQueue("msg.p2p.from.windows.queue");
-        producter.sendMessage(p2pMsg, "hello , this is jms msg");
-    }
+//    @Scheduled(fixedDelay=1500)
+//    public void sendMessage() {
+//        Destination p2pMsg = new ActiveMQQueue("msg.p2p.from.windows.queue");
+//        producter.sendMessage(p2pMsg, "hello , this is jms msg");
+//    }
 }
